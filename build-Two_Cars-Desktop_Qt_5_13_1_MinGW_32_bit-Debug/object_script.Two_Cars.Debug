@@ -1,0 +1,13 @@
+debug/car.o
+debug/circle.o
+debug/gamepage.o
+debug/landingpage.o
+debug/main.o
+debug/myscene.o
+debug/scoreboard.o
+debug/square.o
+debug/qrc_res.o
+debug/moc_circle.o
+debug/moc_gamepage.o
+debug/moc_landingpage.o
+debug/moc_square.o

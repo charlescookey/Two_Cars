@@ -1,0 +1,13 @@
+release/car.o
+release/circle.o
+release/gamepage.o
+release/landingpage.o
+release/main.o
+release/myscene.o
+release/scoreboard.o
+release/square.o
+release/qrc_res.o
+release/moc_circle.o
+release/moc_gamepage.o
+release/moc_landingpage.o
+release/moc_square.o
