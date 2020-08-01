@@ -1,11 +1,9 @@
 #ifndef CAR_H
 #define CAR_H
 
-
 #include <QGraphicsPixmapItem>
 #include <QBrush>
 #include <QGraphicsScene>
-
 
 class Car:public QGraphicsPixmapItem
 {

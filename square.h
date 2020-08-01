@@ -15,8 +15,9 @@ class Square :public QObject ,public QGraphicsRectItem
 public:
     Square();
     Square(int);
+    ~Square();
 signals:
-    void ColidedWithSquare();
+    void ColidedWithSquare(int);
 private:
     QTimer *timer;
 private slots:

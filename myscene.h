@@ -19,7 +19,8 @@ private:
     QPainter *painter = nullptr;
     QPixmap *picture = nullptr;
 
-    //remeber to delete all the timer objects as that in fact is a memory leak lool
+    //the picture and cars are passed into the scene
+    //so the scene deletes them
 
 };
 

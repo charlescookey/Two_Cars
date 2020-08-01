@@ -20,9 +20,7 @@ class GamePage : public QWidget
 public:
     explicit GamePage(QWidget *parent = nullptr);
     ~GamePage();
-
-signals:
-    void closed();
+    void start();
 
 private:
     Ui::GamePage *ui;
@@ -34,9 +32,11 @@ private:
     int circleOrSquare;
     int whichPosition;
 
+    bool gameAlreadyEnded{false};
+
 private slots:
     void spawnCirclesandSquares();
-    void EndGame();
+    void EndGame(int);
     void IncreaseScore();
 };
 

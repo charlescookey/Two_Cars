@@ -2,6 +2,7 @@
 #include "ui_gamepage.h"
 
 #include <QtDebug>
+#include <QMessageBox>
 
 GamePage::GamePage(QWidget *parent) :
     QWidget(parent),
@@ -15,17 +16,27 @@ GamePage::GamePage(QWidget *parent) :
     ss->addItem(sb);
 
     connect(EmmitterC::Instance(),SIGNAL(CollidedWithCircle()),this,SLOT(IncreaseScore()));
-    connect(EmmitterC::Instance(),SIGNAL(ReachedTheEnd()),this,SLOT(EndGame()));
-    connect(EmmitterS::Instance(),SIGNAL(ColidedWithSquare()),this,SLOT(EndGame()));
+    connect(EmmitterC::Instance(),SIGNAL(ReachedTheEnd(int)),this,SLOT(EndGame(int)));
+    connect(EmmitterS::Instance(),SIGNAL(ColidedWithSquare(int)),this,SLOT(EndGame(int)));
 
 
     connect(timer , SIGNAL(timeout()),this,SLOT(spawnCirclesandSquares()));
-    timer->start(1000);
+
 }
 
 GamePage::~GamePage()
 {
+    delete ss;
+    //delete sb; //this is acc taken care of as sb(scoreboard) was passed into ss(the graphics scene)
+    delete timer;
     delete ui;
+}
+
+void GamePage::start()
+{
+    timer->start(1000);
+    sb->resetScore();
+    gameAlreadyEnded =  false;
 }
 
 void GamePage::spawnCirclesandSquares()
@@ -63,9 +74,25 @@ void GamePage::spawnCirclesandSquares()
     }
 }
 
-void GamePage::EndGame()
+void GamePage::EndGame(int a)
 {
-    closed();
+    if(gameAlreadyEnded)//this is incase the car still collides or circle reaches the end afeter the game has ended;
+        return;
+
+    gameAlreadyEnded = true;
+    timer->stop();
+    QString message{};
+
+    if(a == 1){
+        message = "You hit a Square";
+    }else{
+        message = "You missed a Circle";
+    }
+
+    QMessageBox box(QMessageBox::Critical,"GAME OVER!",message,QMessageBox::Ok);
+            if(box.exec() == QMessageBox::Ok){
+                close();
+            }
 }
 
 void GamePage::IncreaseScore()

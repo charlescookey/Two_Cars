@@ -19,3 +19,9 @@ int ScoreBoard::getScore()
 {
     return score;
 }
+
+void ScoreBoard::resetScore()
+{
+    score =0;
+    setPlainText(QString::number(score));
+}

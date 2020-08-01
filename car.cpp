@@ -9,6 +9,7 @@ Car::Car(int x, int y,QString z)
     //constructor that takes an argument to instantiate the car with a position
     setPixmap(QPixmap(z));
     setPos(x , y);
+    position  = false;
 }
 
 void Car::move()

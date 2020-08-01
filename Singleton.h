@@ -24,7 +24,7 @@ private:
     Singleton(Singleton const&&);
     Singleton& operator=(Singleton const&&);
 
-    //here werre implementing the rule of 5 with our copy constructor,copy assigment operator,
+    //here I'm implementing the rule of 5 with our copy constructor,copy assigment operator,
     //move constructor and move assignment operator
     static T* m_Instance;
 };

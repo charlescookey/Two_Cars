@@ -8,6 +8,7 @@ public:
     ScoreBoard(QGraphicsItem *parent = 0);
     void increaseScore();
     int getScore();
+    void resetScore();
 private:
     int score;
 };

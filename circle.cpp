@@ -47,7 +47,7 @@ void Circle::move()
         scene()->removeItem(this);
         delete this;//to delete to avoid memory leaks
 
-        EmmitterC::Instance()->ReachedTheEnd();
+        EmmitterC::Instance()->ReachedTheEnd(2);
     }
 }
 

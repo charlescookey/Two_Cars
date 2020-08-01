@@ -19,6 +19,11 @@ Square::Square(int x)
     timer->start(50);
 }
 
+Square::~Square()
+{
+    delete timer;
+}
+
 void Square::move()
 {
 
@@ -28,7 +33,7 @@ void Square::move()
                 scene()->removeItem(this);
                 delete this;
 
-                EmmitterS::Instance()->ColidedWithSquare();
+                EmmitterS::Instance()->ColidedWithSquare(1);
                 //send signal to increase score
                 return;
 

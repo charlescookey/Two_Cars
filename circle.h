@@ -17,7 +17,7 @@ public:
     ~Circle();
 signals:
     void CollidedWithCircle();
-    void ReachedTheEnd();
+    void ReachedTheEnd(int);
 private:
     QTimer *timer;
 private slots:

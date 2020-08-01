@@ -6,6 +6,8 @@ MyScene::MyScene()
 {
     picture = new QPixmap(400,650);
     painter = new QPainter(picture);
+    //here picture becomes the parent of pixmap
+    //so when it gets deleted it so does picture
 
     painter->fillRect(0,0,400,650,QColor(28,36,43));
     painter->fillRect(195,0,10,650,Qt::white);
@@ -15,6 +17,7 @@ MyScene::MyScene()
         painter->fillRect(298,interval,4,40,Qt::white);
         interval+=60;
     }
+    //here we are drawing the white lines on the road
 
     addPixmap(*picture);
     addItem(lcar);

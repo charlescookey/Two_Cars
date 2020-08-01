@@ -23,12 +23,18 @@ private slots:
     void GamePageEnded();
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
+
 private:
     Ui::LandingPage *ui;
     QPixmap *picture = nullptr;
     QPainter *painter = nullptr;
 
-    GamePage *gg = nullptr;
+    GamePage gg;
+
+    QString message;
 };
 
 #endif // LANDINGPAGE_H
