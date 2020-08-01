@@ -1,6 +1,8 @@
 ## Two_Cars
 This game is based off the "2 Cars" android game created by "Ketchapp". I decided to recreate it as a Desktop application as my Udacity C++ nanoDdegree CApstone Project. This is what the game looks like when launched.
 <img src="images/gif.gif"/>
+
+
 The idea of the game is to avoid the Squares and not miss a single Circle.
 
 ##How to play the game:
