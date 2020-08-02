@@ -34,7 +34,7 @@ GamePage::~GamePage()
 
 void GamePage::start()
 {
-    timer->start(1000);
+    timer->start(900);
     sb->resetScore();
     gameAlreadyEnded =  false;
 }
@@ -79,6 +79,7 @@ void GamePage::EndGame(int a)
     if(gameAlreadyEnded)//this is incase the car still collides or circle reaches the end afeter the game has ended;
         return;
 
+    current_score = sb->getScore();
     gameAlreadyEnded = true;
     timer->stop();
     QString message{};
@@ -91,6 +92,7 @@ void GamePage::EndGame(int a)
 
     QMessageBox box(QMessageBox::Critical,"GAME OVER!",message,QMessageBox::Ok);
             if(box.exec() == QMessageBox::Ok){
+                gameEnded();
                 close();
             }
 }

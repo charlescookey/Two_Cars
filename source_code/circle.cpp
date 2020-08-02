@@ -39,7 +39,7 @@ void Circle::move()
         }
 
     //to make the circle continue moving down as soon as its created
-    setPos(x(),y()+15);
+    setPos(x(),y()+20);//15 at first release
     //this 10 is what should increase ast the gae gets longer so the iteams falls faster creting the illusion of increase speed.
     //and probalbly the rate of items looool.
 

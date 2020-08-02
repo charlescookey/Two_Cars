@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QPainter>
 #include <QBrush>
+#include <QFile>
 
 #include "gamepage.h"
 
@@ -20,12 +21,13 @@ public:
     ~LandingPage();
 
 private slots:
-    void GamePageEnded();
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
 
     void on_pushButton_3_clicked();
+
+    void ReWriteHighScore();
 
 private:
     Ui::LandingPage *ui;
@@ -35,6 +37,8 @@ private:
     GamePage gg;
 
     QString message;
+
+    int highscore;
 };
 
 #endif // LANDINGPAGE_H

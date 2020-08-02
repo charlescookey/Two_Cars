@@ -21,6 +21,10 @@ public:
     explicit GamePage(QWidget *parent = nullptr);
     ~GamePage();
     void start();
+    int getCurrentscore(){return current_score;}
+
+signals:
+    void gameEnded();
 
 private:
     Ui::GamePage *ui;
@@ -33,6 +37,7 @@ private:
     int whichPosition;
 
     bool gameAlreadyEnded{false};
+    int current_score{0};
 
 private slots:
     void spawnCirclesandSquares();

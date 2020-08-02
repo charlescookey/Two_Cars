@@ -40,6 +40,25 @@ LandingPage::LandingPage(QWidget *parent) :
     (this)->setPalette(palette);
 
 
+    connect(&gg,SIGNAL(gameEnded()),this,SLOT(ReWriteHighScore()));
+    QFile file(":/text/score.txt");
+
+    if (file.open(QIODevice::ReadWrite | QIODevice::Text)){
+          QString a= file.readLine();
+          int score = a.toInt();
+          highscore = score;
+
+    }else{
+        qDebug()<<"couldnt read the highscore";
+    }
+
+    file.close();
+
+    ui->label_2->setText(QString("Highscore: "+QString::number(highscore)));
+    ui->label_2->setFont(QFont("times",10));
+    ui->label_2->setStyleSheet("#label_2{color : white;}");
+
+
 }
 
 LandingPage::~LandingPage()
@@ -47,11 +66,6 @@ LandingPage::~LandingPage()
     delete painter;
     delete picture;
     delete ui;
-}
-
-void LandingPage::GamePageEnded()
-{
-      qDebug()<<"i recieved the signal that the game has ended";
 }
 
 void LandingPage::on_pushButton_clicked()
@@ -85,4 +99,30 @@ void LandingPage::on_pushButton_3_clicked()
                       "\nDepending on when you see the game i intend on adding sound effects and some themes"
                       "\n\nThank you for playing my game.");
     QMessageBox::information(this,"ABOUT THIS GAME!",message);
+}
+
+void LandingPage::ReWriteHighScore()
+{
+    qDebug()<<"game ended";
+    qDebug()<<"currennt = "<<gg.getCurrentscore() ;
+    qDebug()<<"now = "<<highscore ;
+
+    if(gg.getCurrentscore()>highscore){
+        highscore = gg.getCurrentscore();
+        QFile wfile(":/text/score.txt");
+
+        if (wfile.open(QIODevice::WriteOnly)){
+          QString a= QString::number(highscore);
+          qDebug()<<"i got to change the file??";
+          QTextStream out(&wfile);
+          out.flush();
+          out << a;
+        }else{
+            qDebug()<<"write operaiion still failing";
+        }
+        wfile.close();
+        ui->label_2->setText(QString("Highscore: "+QString::number(highscore)));
+        //ui->label_2->setFont(QFont("times",10));
+        //ui->label_2->setStyleSheet("#label_2{color : white;}");
+    }
 }

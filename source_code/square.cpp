@@ -26,7 +26,6 @@ Square::~Square()
 
 void Square::move()
 {
-
     QList<QGraphicsItem *>colliding_items = collidingItems();
         for(auto a : colliding_items){
             if(typeid(*(a)) == typeid(Car)){
@@ -36,18 +35,15 @@ void Square::move()
                 EmmitterS::Instance()->ColidedWithSquare(1);
                 //send signal to increase score
                 return;
-
             }
         }
 
-
-
     //this is the slot the timer is conncted to so as sooon as its created it starts movung down
-    setPos(x(),y()+15);
+    setPos(x(),y()+20);//15 at first release
+    //same idea with the circle , shuld increammntally increase sasb the game goes on gor longer lool
 
     if(y() >= scene()->height()){
         scene()->removeItem(this);
         delete this;//deleying this instance as soon as it leaves the scope of the scene manually to avid memory leaks
     }
-
 }
