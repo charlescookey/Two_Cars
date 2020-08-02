@@ -28,9 +28,9 @@ a. Run qmake on "the source_code" folder to create a platform_specific build fol
   This the centre of the game, you move both cars to avoid Sqaures
 * The Circle is in the `circle.cpp` and `circle.h` files.
   This item is not to be missed, you are to touch all circle
-* The Squre is in the `square.cpp` and `square.h`files
+* The Squre is in the `square.cpp` and `square.h`files. 
   If the car collides with thid item, the game comes to an end
-* The Score counter is in the `scoreboard.cpp` and `scoreboard.h`files
+* The Score counter is in the `scoreboard.cpp` and `scoreboard.h`files. 
   This counts the number of circles that have been touched before the game ends;
 
 The landingpage contains the first Page you see when you start the game. It has three buttons
