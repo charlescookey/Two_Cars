@@ -7,11 +7,11 @@ This game is based off the "2 Cars" android game created by "Ketchapp". I decide
 
 The idea of the game is to avoid the Squares and not miss a single Circle.
 
-##How to play the game:
+## How to play the game:
 1.  Download the "executable" folder and launch the "Two_Cars.exe". 
 Note: The folder contains all the dll's that is needed to run the game.
 
-##How to build the game from scratch:
+## How to build the game from scratch:
 There are two ways to do this 
 1. Using the Qt Creator.
 a. Download the Qt IDE from [Qt official download page](https://www.qt.io/download)
@@ -22,15 +22,15 @@ c. Click on build.
 a. Run qmake on "the source_code" folder to create a platform_specific build folder like the build folder in this repo. 
    qmake would aslo create MakeFiles for you run `make` yourself
    
-##the file ,class structure and the expected behavior or output of the program.
-Each object has its class.
-The car is in the `car.cpp` and `car.h`files.
+## the file ,class structure and the expected behavior or output of the program.
+* Each object has its class.
+* The car is in the `car.cpp` and `car.h`files.
   This the centre of the game, you move both cars to avoid Sqaures
-The Circle is in the `circle.cpp` and `circle.h` files.
+* The Circle is in the `circle.cpp` and `circle.h` files.
   This item is not to be missed, you are to touch all circle
-The Squre is in the `square.cpp` and `square.h`files
+* The Squre is in the `square.cpp` and `square.h`files
   If the car collides with thid item, the game comes to an end
-The Score counter is in the `scoreboard.cpp` and `scoreboard.h`files
+* The Score counter is in the `scoreboard.cpp` and `scoreboard.h`files
   This counts the number of circles that have been touched before the game ends;
 
 The landingpage contains the first Page you see when you start the game. It has three buttons
@@ -38,7 +38,7 @@ The landingpage contains the first Page you see when you start the game. It has 
 2. HOW TO PLAY - This contains instruction on how to play
 3. ABOUT THE GAME - This gives iinformation about the game at its current state
 
-##The Rubric Points Passed
+## The Rubric Points Passed
 1.A variety of control structures are used in the project.
 I used diffent Data Structure for the diffent Items in the game
 2.The project code is clearly organized into functions.
