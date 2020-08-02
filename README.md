@@ -39,25 +39,25 @@ The landingpage contains the first Page you see when you start the game. It has 
 3. ABOUT THE GAME - This gives iinformation about the game at its current state
 
 ## The Rubric Points Passed
-1.A variety of control structures are used in the project.
-I used diffent Data Structure for the diffent Items in the game
-2.The project code is clearly organized into functions.
-Each item has a function to do a certain task, like move, increase score.
-3.The project accepts input from a user as part of the necessary operation of the program.
-The user uses the Left and Right arrow keys to control the cars
-4.The project code is organized into classes with class attributes to hold the data, and class methods to perform tasks.
+* A variety of control structures are used in the project.
+*I used diffent Data Structure for the diffent Items in the game*
+* The project code is clearly organized into functions.
+*Each item has a function to do a certain task, like move, increase score.*
+* The project accepts input from a user as part of the necessary operation of the program.
+*The user uses the Left and Right arrow keys to control the cars*
+* The project code is organized into classes with class attributes to hold the data, and class methods to perform tasks.
 Each Class has functions of their own
-5.All class data members are explicitly specified as public, protected, or private.
+* All class data members are explicitly specified as public, protected, or private.
 Every class has private and public member functions. An example is the "MyScene" Class which has public,private and a protected member.
-6.All class members that are set to argument values are initialized through member initialization lists.
+* All class members that are set to argument values are initialized through member initialization lists.
 An example is the `scoreboard.cpp` where the constructor initailizes the `score` and its parent.
-7.One function is overloaded with different signatures for the same function name.
+* One function is overloaded with different signatures for the same function name.
 The Circle and Square class has two constructors that take diffent types of arguments.
-8.One function is declared with a template that allows it to accept a generic parameter.
+* One function is declared with a template that allows it to accept a generic parameter.
 The Singleton class uses a temlate such that it works with Circles and Squares
-9.For all classes, if any one of the copy constructor, copy assignment operator, move constructor, move assignment operator, and destructor are defined, then all of these functions are defined.
+* For all classes, if any one of the copy constructor, copy assignment operator, move constructor, move assignment operator, and destructor are defined, then all of these functions are defined.
 The singleton class implements the rule of 5.
-9.At least one class that uses unmanaged dynamically allocated memory, along with any class that otherwise needs to modify state upon the termination of an object, uses a destructor.
+* At least one class that uses unmanaged dynamically allocated memory, along with any class that otherwise needs to modify state upon the termination of an object, uses a destructor.
 For every call to `new` there is a corresponding call to `delete` in the destructors
 
    
