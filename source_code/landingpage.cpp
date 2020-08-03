@@ -1,26 +1,16 @@
 #include "landingpage.h"
 #include "ui_landingpage.h"
 #include <QPalette>
-#include <QtDebug>
 #include <QMessageBox>
+#include <QSettings>
 
-//
-//
-//do clean up
-//remove all the qt debig stuff we used.
-//
-//figure out how you will run the sublission
-//
-//abeg no too waste time
-//
-//you're well, god Charles
-//
+#include <QMediaPlaylist>
+
 LandingPage::LandingPage(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::LandingPage)
 {
     ui->setupUi(this);
-    //ui->centralwidget->setStyle();
 
     picture = new QPixmap(400,650);
     painter = new QPainter(picture);
@@ -41,28 +31,40 @@ LandingPage::LandingPage(QWidget *parent) :
 
 
     connect(&gg,SIGNAL(gameEnded()),this,SLOT(ReWriteHighScore()));
-    QFile file(":/text/score.txt");
 
-    if (file.open(QIODevice::ReadWrite | QIODevice::Text)){
-          QString a= file.readLine();
-          int score = a.toInt();
-          highscore = score;
+    QSettings settings("Halo-Tech","Two-Cars");//company name and app name to save the setting(highscore in this context)
+    settings.beginGroup("ScoreSystem");
+    QString a = settings.value("highscore",QString::number(0)).toString();
+    settings.endGroup();
 
-    }else{
-        qDebug()<<"couldnt read the highscore";
-    }
-
-    file.close();
+    highscore = a.toInt();
 
     ui->label_2->setText(QString("Highscore: "+QString::number(highscore)));
-    ui->label_2->setFont(QFont("times",10));
-    ui->label_2->setStyleSheet("#label_2{color : white;}");
+    ui->label_2->setStyleSheet("#label_2{color : white;font: 12px;}");
+    //starts here
 
 
+    QMediaPlaylist *playlist = new QMediaPlaylist();
+    playlist->addMedia(QUrl("qrc:/songs_and_effects/500_Miles.mp3"));
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
+
+    music = new QMediaPlayer();
+    music->setPlaylist(playlist);
+    music->play();
+
+    ui->radioButton->setChecked(true);
+    ui->radioButton->setStyleSheet("#radioButton{color : white;font: bold 14px;}");
+    musicState = false;
 }
 
 LandingPage::~LandingPage()
 {
+    QSettings settings("Halo-Tech","Two-Cars");//company name and app name to save the setting(highscore in this context)
+    settings.beginGroup("ScoreSystem");
+    //settings.setValue("highscore",QString::number(highscore));
+    settings.setValue("highscore",QString::number(0));
+    settings.endGroup();
+    delete music;
     delete painter;
     delete picture;
     delete ui;
@@ -71,7 +73,10 @@ LandingPage::~LandingPage()
 void LandingPage::on_pushButton_clicked()
 {
     gg.show();
-    gg.start();
+    gg.start(musicState);
+
+    hide();
+    music->stop();
 
     return;
 }
@@ -96,33 +101,35 @@ void LandingPage::on_pushButton_3_clicked()
                       "\nIf you want to reach me, below are my details"
                       "\nName\t\tCharles Iroegbu"
                       "\nemail\t\tcharlesiroegbu99@gmail.com"
-                      "\nDepending on when you see the game i intend on adding sound effects and some themes"
+                      "\nThe songs and effects were donlaoded from the following sites"
+                      "\n->freesoundeffects.com"
+                      "\n->cutepup.club"
+                      "\n->noisesforfun.com"
+                      "\nThe song choice was inspired by Marshall Eriksen's fiero"
                       "\n\nThank you for playing my game.");
     QMessageBox::information(this,"ABOUT THIS GAME!",message);
 }
 
 void LandingPage::ReWriteHighScore()
 {
-    qDebug()<<"game ended";
-    qDebug()<<"currennt = "<<gg.getCurrentscore() ;
-    qDebug()<<"now = "<<highscore ;
+    show();
+    if(!musicState)
+        music->play();
 
     if(gg.getCurrentscore()>highscore){
         highscore = gg.getCurrentscore();
-        QFile wfile(":/text/score.txt");
-
-        if (wfile.open(QIODevice::WriteOnly)){
-          QString a= QString::number(highscore);
-          qDebug()<<"i got to change the file??";
-          QTextStream out(&wfile);
-          out.flush();
-          out << a;
-        }else{
-            qDebug()<<"write operaiion still failing";
-        }
-        wfile.close();
         ui->label_2->setText(QString("Highscore: "+QString::number(highscore)));
-        //ui->label_2->setFont(QFont("times",10));
-        //ui->label_2->setStyleSheet("#label_2{color : white;}");
     }
+}
+
+void LandingPage::on_radioButton_clicked()
+{
+    if(musicState){
+        musicState = false;
+        music->play();
+    }else{
+        musicState = true;
+        music->stop();
+    }
+
 }

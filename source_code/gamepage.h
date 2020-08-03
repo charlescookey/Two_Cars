@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QRandomGenerator>
 #include <QTimer>
+
+#include <QMediaPlayer>
 #include "myscene.h"
 
 #include "circle.h"
@@ -20,7 +22,7 @@ class GamePage : public QWidget
 public:
     explicit GamePage(QWidget *parent = nullptr);
     ~GamePage();
-    void start();
+    void start(bool);
     int getCurrentscore(){return current_score;}
 
 signals:
@@ -28,9 +30,15 @@ signals:
 
 private:
     Ui::GamePage *ui;
+
+    //dont worry there's a corresponding call to delete for all these "new" to aoid a memory leak
+
     MyScene *ss = new MyScene();
     ScoreBoard *sb = new ScoreBoard();
     QTimer *timer = new QTimer();
+
+    QMediaPlayer *music = nullptr;
+    QMediaPlaylist *playlist = nullptr;
 
     int topPositions[4] = {30,130,230,330};
     int circleOrSquare;
@@ -38,6 +46,7 @@ private:
 
     bool gameAlreadyEnded{false};
     int current_score{0};
+    bool musicState;
 
 private slots:
     void spawnCirclesandSquares();

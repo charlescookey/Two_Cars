@@ -1,7 +1,6 @@
 #include "circle.h"
 
 #include <QGraphicsScene>
-#include <QtDebug>
 
 Circle::Circle()
 {

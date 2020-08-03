@@ -1,8 +1,8 @@
 #include "gamepage.h"
 #include "ui_gamepage.h"
-
-#include <QtDebug>
 #include <QMessageBox>
+
+#include <QMediaPlaylist>
 
 GamePage::GamePage(QWidget *parent) :
     QWidget(parent),
@@ -22,18 +22,34 @@ GamePage::GamePage(QWidget *parent) :
 
     connect(timer , SIGNAL(timeout()),this,SLOT(spawnCirclesandSquares()));
 
+    playlist = new QMediaPlaylist();
+    playlist->addMedia(QUrl("qrc:/songs_and_effects/car_start.mp3"));
+    playlist->addMedia(QUrl("qrc:/songs_and_effects/SHA.mp3"));
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
+
+    music = new QMediaPlayer();
+
+
+
 }
 
 GamePage::~GamePage()
 {
     delete ss;
+    delete playlist;
+    delete music;
     //delete sb; //this is acc taken care of as sb(scoreboard) was passed into ss(the graphics scene)
     delete timer;
     delete ui;
 }
 
-void GamePage::start()
+void GamePage::start(bool m)
 {
+    musicState = m;
+    if(!musicState){
+        music->setPlaylist(playlist);
+        music->play();
+    }
     timer->start(900);
     sb->resetScore();
     gameAlreadyEnded =  false;
@@ -78,7 +94,11 @@ void GamePage::EndGame(int a)
 {
     if(gameAlreadyEnded)//this is incase the car still collides or circle reaches the end afeter the game has ended;
         return;
-
+    if(!musicState){
+        music->stop();
+        music->setMedia(QUrl("qrc:/songs_and_effects/car_hit.wav"));
+        music->play();
+    }
     current_score = sb->getScore();
     gameAlreadyEnded = true;
     timer->stop();
@@ -93,11 +113,14 @@ void GamePage::EndGame(int a)
     QMessageBox box(QMessageBox::Critical,"GAME OVER!",message,QMessageBox::Ok);
             if(box.exec() == QMessageBox::Ok){
                 gameEnded();
+                music->stop();
                 close();
+
             }
 }
 
 void GamePage::IncreaseScore()
 {
-    sb->increaseScore();
+    if(!gameAlreadyEnded)
+        sb->increaseScore();
 }

@@ -3,4 +3,10 @@
         <file>rcar.png</file>
         <file>lcar.png</file>
     </qresource>
+    <qresource prefix="/songs_and_effects">
+        <file>500_Miles.mp3</file>
+        <file>car_hit.wav</file>
+        <file>car_start.mp3</file>
+        <file>SHA.mp3</file>
+    </qresource>
 </RCC>

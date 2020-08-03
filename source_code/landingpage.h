@@ -6,6 +6,8 @@
 #include <QBrush>
 #include <QFile>
 
+#include <QMediaPlayer>
+
 #include "gamepage.h"
 
 namespace Ui {
@@ -29,16 +31,21 @@ private slots:
 
     void ReWriteHighScore();
 
+    void on_radioButton_clicked();
+
 private:
     Ui::LandingPage *ui;
     QPixmap *picture = nullptr;
     QPainter *painter = nullptr;
+    QMediaPlayer *music = nullptr;
 
     GamePage gg;
 
     QString message;
 
     int highscore;
+
+    bool musicState;
 };
 
 #endif // LANDINGPAGE_H

@@ -1,6 +1,5 @@
 #include "car.h"
 
-#include <QtDebug>
 #include <QPixmap>
 
 

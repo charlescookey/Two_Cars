@@ -1,7 +1,6 @@
 #include "square.h"
 
 #include <QGraphicsScene>
-#include <QtDebug>
 
 Square::Square()
 {
