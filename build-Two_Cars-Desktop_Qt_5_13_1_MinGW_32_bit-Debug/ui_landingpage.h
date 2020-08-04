@@ -15,6 +15,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -49,12 +50,20 @@ public:
     QPushButton *pushButton_3;
     QSpacerItem *horizontalSpacer_7;
     QSpacerItem *verticalSpacer_4;
+    QHBoxLayout *horizontalLayout_6;
+    QSpacerItem *horizontalSpacer_10;
+    QRadioButton *radioButton;
 
     void setupUi(QMainWindow *LandingPage)
     {
         if (LandingPage->objectName().isEmpty())
             LandingPage->setObjectName(QString::fromUtf8("LandingPage"));
         LandingPage->resize(400, 600);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(LandingPage->sizePolicy().hasHeightForWidth());
+        LandingPage->setSizePolicy(sizePolicy);
         centralwidget = new QWidget(LandingPage);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
@@ -162,6 +171,21 @@ public:
 
         verticalLayout->addItem(verticalSpacer_4);
 
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
+        horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_10);
+
+        radioButton = new QRadioButton(centralwidget);
+        radioButton->setObjectName(QString::fromUtf8("radioButton"));
+        radioButton->setLayoutDirection(Qt::LeftToRight);
+
+        horizontalLayout_6->addWidget(radioButton);
+
+
+        verticalLayout->addLayout(horizontalLayout_6);
+
         LandingPage->setCentralWidget(centralwidget);
 
         retranslateUi(LandingPage);
@@ -181,6 +205,10 @@ public:
         pushButton->setText(QCoreApplication::translate("LandingPage", "START", nullptr));
         pushButton_2->setText(QCoreApplication::translate("LandingPage", "How to play", nullptr));
         pushButton_3->setText(QCoreApplication::translate("LandingPage", "About", nullptr));
+#if QT_CONFIG(statustip)
+        radioButton->setStatusTip(QCoreApplication::translate("LandingPage", "Turn the music on/off", nullptr));
+#endif // QT_CONFIG(statustip)
+        radioButton->setText(QCoreApplication::translate("LandingPage", "Music", nullptr));
     } // retranslateUi
 
 };

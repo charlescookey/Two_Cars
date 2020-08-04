@@ -249,8 +249,10 @@ Makefile: ../Two_Cars/Two_Cars.pro C:/Qt/Qt5.13.1/5.13.1/mingw73_32/mkspecs/win3
 		C:/Qt/Qt5.13.1/5.13.1/mingw73_32/mkspecs/features/yacc.prf \
 		C:/Qt/Qt5.13.1/5.13.1/mingw73_32/mkspecs/features/lex.prf \
 		../Two_Cars/Two_Cars.pro \
+		C:/Qt/Qt5.13.1/5.13.1/mingw73_32/lib/Qt5Multimedia.prl \
 		C:/Qt/Qt5.13.1/5.13.1/mingw73_32/lib/Qt5Widgets.prl \
 		C:/Qt/Qt5.13.1/5.13.1/mingw73_32/lib/Qt5Gui.prl \
+		C:/Qt/Qt5.13.1/5.13.1/mingw73_32/lib/Qt5Network.prl \
 		C:/Qt/Qt5.13.1/5.13.1/mingw73_32/lib/Qt5Core.prl \
 		C:/Qt/Qt5.13.1/5.13.1/mingw73_32/lib/qtmain.prl
 	$(QMAKE) -o Makefile ..\Two_Cars\Two_Cars.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -440,8 +442,10 @@ C:/Qt/Qt5.13.1/5.13.1/mingw73_32/mkspecs/features/exceptions.prf:
 C:/Qt/Qt5.13.1/5.13.1/mingw73_32/mkspecs/features/yacc.prf:
 C:/Qt/Qt5.13.1/5.13.1/mingw73_32/mkspecs/features/lex.prf:
 ../Two_Cars/Two_Cars.pro:
+C:/Qt/Qt5.13.1/5.13.1/mingw73_32/lib/Qt5Multimedia.prl:
 C:/Qt/Qt5.13.1/5.13.1/mingw73_32/lib/Qt5Widgets.prl:
 C:/Qt/Qt5.13.1/5.13.1/mingw73_32/lib/Qt5Gui.prl:
+C:/Qt/Qt5.13.1/5.13.1/mingw73_32/lib/Qt5Network.prl:
 C:/Qt/Qt5.13.1/5.13.1/mingw73_32/lib/Qt5Core.prl:
 C:/Qt/Qt5.13.1/5.13.1/mingw73_32/lib/qtmain.prl:
 qmake: FORCE
